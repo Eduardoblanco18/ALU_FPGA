@@ -891,6 +891,30 @@ set_global_assignment -name VHDL_FILE ../src/general_adder.vhd
 set_global_assignment -name VHDL_FILE ../src/multiplier.vhd
 set_global_assignment -name VHDL_FILE ../src/multiplier_2_bits.vhd
 set_global_assignment -name VHDL_FILE ../testbench/ALU_tb.vhd
+set_global_assignment -name VHDL_FILE ../testbench/multiplier_tb.vhd
+set_global_assignment -name EDA_TEST_BENCH_NAME multiplier_TESTBENCH -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id multiplier_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME multiplier_tb -section_id multiplier_TESTBENCH
+set_global_assignment -name VHDL_FILE ../testbench/full_adder_tb.vhd
+set_global_assignment -name EDA_TEST_BENCH_NAME full_adder_TESTBENCH -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id full_adder_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME full_adder_tb -section_id full_adder_TESTBENCH
+set_global_assignment -name VHDL_FILE ../testbench/adder_4_bits_tb.vhd
+set_global_assignment -name EDA_TEST_BENCH_NAME adder_4_bits_TESBENCH -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id adder_4_bits_TESBENCH
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME adder_4_bits_tb -section_id adder_4_bits_TESBENCH
+set_global_assignment -name VHDL_FILE ../testbench/comparator_4_bits_tb.vhd
+set_global_assignment -name EDA_TEST_BENCH_NAME comparator_4_bits_TESTBENCH -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id comparator_4_bits_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME comparator_4_bits_tb -section_id comparator_4_bits_TESTBENCH
 set_global_assignment -name EDA_TEST_BENCH_FILE ../src/ALU.vhd -section_id ALU_TESTBENCH
 set_global_assignment -name EDA_TEST_BENCH_FILE ../testbench/ALU_tb.vhd -section_id ALU_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/multiplier_2_bits.vhd -section_id multiplier_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../testbench/multiplier_tb.vhd -section_id multiplier_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/full_adder.vhd -section_id full_adder_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../testbench/full_adder_tb.vhd -section_id full_adder_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/adder_4_bits.vhd -section_id adder_4_bits_TESBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../testbench/adder_4_bits_tb.vhd -section_id adder_4_bits_TESBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../src/comparator_4_bits.vhd -section_id comparator_4_bits_TESTBENCH
+set_global_assignment -name EDA_TEST_BENCH_FILE ../testbench/comparator_4_bits_tb.vhd -section_id comparator_4_bits_TESTBENCH
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

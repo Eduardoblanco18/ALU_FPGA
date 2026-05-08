@@ -11,7 +11,7 @@ architecture tb of ALU_tb is
 	signal vector_HEX0, vector_HEX2, vector_HEX3, vector_HEX4, vector_HEX5, vector_HEX6, vector_HEX7: std_logic_vector (6 downto 0);
 	
 	begin
-	uut: entity work.ALU port map(SW => vector_e, LEDR => vector_LEDR, HEX0 => vector_HEX0, HEX2 => vector_HEX2, HEX3 => vector_HEX3, HEX4 => vector_HEX4, HEX5 => vector_HEX5, HEX6 => vector_HEX6, HEX7 => vector_HEX7);
+		uut: entity work.ALU port map(SW => vector_e, LEDR => vector_LEDR, HEX0 => vector_HEX0, HEX2 => vector_HEX2, HEX3 => vector_HEX3, HEX4 => vector_HEX4, HEX5 => vector_HEX5, HEX6 => vector_HEX6, HEX7 => vector_HEX7);
 		
 		process
 			begin
