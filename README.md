@@ -62,6 +62,11 @@ ALU_FPGA/
 │   └── ...
 │
 ├── docs/
+|   ├── images/
+|       ├── ALU_Simulation_part1.png
+|       ├── ALU_Simulation_part2.png
+|       ├── Adder_4_Bits_Simulation.png
+|       └── ...
 │
 ├── README.md
 └── .gitignore
@@ -179,4 +184,4 @@ Contact:
 
 <div align="center">
   <a href="https://www.linkedin.com/in/nunes-andrade" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-<\div>
+</div>
