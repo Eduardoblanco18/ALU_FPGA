@@ -6,7 +6,7 @@ use work.multiplier.all;
 use work.four_adder.all;
 use work.general_adder.all;
 
-entity ALU is
+entity ALU is	--Criação das entradas e saídas do circuito
 		port (
 				SW: in std_logic_vector (10 downto 0);
 				LEDR: out std_logic_vector (5 downto 0);
@@ -24,7 +24,7 @@ entity ALU is
 				);
 		end entity ALU;
 		
-architecture BHV_ALU of ALU is
+architecture BHV_ALU of ALU is		--Criação dos sinais que serâo utilizados no circuito
 	
 	signal Num_A, Num_B, Result: std_logic_vector (3 downto 0);
 	signal OP_CODE: std_logic_vector (2 downto 0);
@@ -37,7 +37,7 @@ architecture BHV_ALU of ALU is
 	signal VALOR_ABS_A, VALOR_ABS_B, VALOR_ABS_RESULT: std_logic_vector (3 downto 0); 
 	
 		begin
-			
+				--Coloca o valor do OP_code (sendo de SW2 a SW0) e corta os valores de A e B quando OP_code é 0 e limita eles a 2 bits quando o OP_code é 110 (6), coloca os valores de A e B com 4 bits nos demais casos (sendo o de A SW10 a SW7 e B de SW6 a SW3)
 			OP_CODE <= SW(2 downto 0);
 			Num_A <= "0000" when OP_CODE = "000" else 
 						"00" & SW(8 downto 7) when OP_CODE = "110" else 
@@ -45,7 +45,7 @@ architecture BHV_ALU of ALU is
 			Num_B <= "0000" when OP_CODE = "000" else 
 						"00" & SW(4 downto 3) when OP_CODE = "110" else
 						SW (6 downto 3);
-			
+				--Atribui as respectivas entradas e saídas de acordo com o OP_code
 			SOMADOR: adder_4_bits port map (a => Num_A, b => Num_B, cin => '0', soma => SOMA_RES, cout => SOMA_CF, overflow => SOMA_OF);
 			
 			SUBTRATOR: adder_4_bits port map (a => Num_A, b => NOT Num_B, cin => '1', soma => SUB_RES, cout => SUB_CF, overflow => SUB_OF);
@@ -60,7 +60,7 @@ architecture BHV_ALU of ALU is
 			
 			NOT_RES <= NOT Num_B;
 			
-			with OP_CODE select  --seleção do resultado de acordo com o códigos operacional da ULA
+			with OP_CODE select  --Seleção do resultado de acordo com o códigos operacional da ULA
 				Result <=
 					"0000" when "000",
 					AND_RES when "001",
@@ -71,24 +71,24 @@ architecture BHV_ALU of ALU is
 					MUL_RES when "110",
 					"0000" when others;
 			
-			with OP_CODE select	--seleção da utilização do carry flag de acordo com o códigos operacional da ULA
+			with OP_CODE select	--Seleção da utilização do carry flag de acordo com o código operacional da ULA
 				CF <= 
 					SOMA_CF when "100",
 					SUB_CF when "101",
 					'0' when others;
 					
-			with OP_CODE select 	--seleção da utilização do overflow de acordo com o códigos operacional da ULA
+			with OP_CODE select 	--Seleção da utilização do overflow de acordo com o código operacional da ULA
 				OFW <= 
 					SOMA_OF when "100",
 					SUB_OF when "101",
 					'0' when others;	
 			
-			with Result select	--seleção da utilização do zero flag de acordo com o códigos operacional da ULA
+			with Result select	--Seleção da utilização do zero flag de acordo com o código operacional da ULA
 				ZF <= 
 					'1' when "0000",
 					'0' when others;
 						
-			with OP_CODE select	--seleção de qual led utilizar de acordo com o resultado vindo da função de comparar presente na ULA
+			with OP_CODE select	--Seleção de qual led utilizar de acordo com o resultado vindo da função de comparar presente na ULA
 				LEDR(5) <= 
 						  Lesser when "111",
 						  '0' when others;
@@ -103,9 +103,9 @@ architecture BHV_ALU of ALU is
 						  Equal when "111",
 						  '0' when others;
 							  
-			LEDR(2) <= OFW;	-- direcionamento do sinal da overflow flag para seu respectivo led
-			LEDR(1) <= '0' when OP_CODE = "000" OR OP_CODE = "111" else ZF;  -- direcionamento do sinal da zero flag para seu respectivo led e seleção da representação do zaero flag no led de acordo com a escolha de código operacional
-			LEDR(0) <= CF;		-- direcionamento do sinal da carry flag para seu respectivo led
+			LEDR(2) <= OFW;	-- Direcionamento do sinal da overflow flag para seu respectivo led
+			LEDR(1) <= '0' when OP_CODE = "000" OR OP_CODE = "111" else ZF;  -- Direcionamento do sinal da zero flag para seu respectivo led e seleção da representação do zaero flag no led de acordo com a escolha de código operacional
+			LEDR(0) <= CF;		-- Direcionamento do sinal da carry flag para seu respectivo led
 			
 			--Representação do OP_CODE
 			

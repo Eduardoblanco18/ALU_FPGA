@@ -1,8 +1,7 @@
 Library ieee;
 use ieee.std_logic_1164.all;
-use work.four_adder.all;
 
-entity comparator_4_bits is 
+entity comparator_4_bits is --criação das entradas e saídas que serão utilizadas no circuito
 			port (
 					Comp: in std_logic_vector (3 downto 0);
 					Overflow: in std_logic;
@@ -12,7 +11,7 @@ entity comparator_4_bits is
 			
 architecture bhv_comparator of comparator_4_bits is
 	signal EQU_interno: std_logic;
-	
+	--utiliza o resultado da subtração para afirmar que A>B, A<B ou A=B e coloca a saída em seu respectivo led
 		begin 
 			
 			EQU_interno <= NOT (Comp(0) OR Comp(1) OR Comp(2) OR Comp(3));
